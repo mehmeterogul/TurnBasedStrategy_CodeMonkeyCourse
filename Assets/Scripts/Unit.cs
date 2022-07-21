@@ -14,8 +14,12 @@ public class Unit : MonoBehaviour
         if(Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
         {   
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
-            float moveSpeed = 10f;
+            
+            float moveSpeed = 5f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
+
+            float rotationSpeed = 15f;
+            transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotationSpeed);
 
             unitAnimator.SetBool("isWalking", true);
         }
