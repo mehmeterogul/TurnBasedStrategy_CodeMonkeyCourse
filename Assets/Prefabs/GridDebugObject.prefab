@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8396034903757551406}
+  - component: {fileID: 3817745390948291710}
   m_Layer: 0
   m_Name: GridDebugObject
   m_TagString: Untagged
@@ -30,8 +31,21 @@ Transform:
   m_Children:
   - {fileID: 8396034904419036001}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3817745390948291710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396034903757551407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82662f511397f8f4dbbd426cbd510262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugObjectText: {fileID: 8396034904419036000}
 --- !u!1 &8396034904419036002
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,8 +173,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 2
+  m_fontSizeBase: 2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
