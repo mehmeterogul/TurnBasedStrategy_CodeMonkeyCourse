@@ -5,14 +5,16 @@ using UnityEngine;
 public class Testing : MonoBehaviour
 {
     GridSystem gridSystem;
+    [SerializeField] Transform debugObjectPrefab;
 
     private void Start()
     {
-        gridSystem = new GridSystem(20, 20, 2f);
+        gridSystem = new GridSystem(10, 10, 2f);
     }
 
     private void Update()
     {
-        Debug.Log(gridSystem.GetGridPosition(MouseWorld.GetPosition()));
+        // Debug.Log(gridSystem.GetGridPosition(MouseWorld.GetPosition()));
+        gridSystem.CreateDebugObjects(debugObjectPrefab);
     }
 }
