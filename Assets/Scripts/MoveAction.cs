@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,7 +46,16 @@ public class MoveAction : MonoBehaviour
     public bool IsValidActionGridPosition(GridPosition gridPosition)
     {
         List<GridPosition> validGridPositionList = GetValidActionGridPositionList();
-        return validGridPositionList.Contains(gridPosition);
+        
+        foreach (GridPosition gridPos in validGridPositionList)
+        {
+            if(gridPos == gridPosition)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public List<GridPosition> GetValidActionGridPositionList()

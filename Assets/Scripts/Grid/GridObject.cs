@@ -44,6 +44,6 @@ public class GridObject
 
     public bool HasAnyUnit()
     {
-        return GetUnitList().Count > 0;
+        return unitList.Count > 0;
     }
 }
