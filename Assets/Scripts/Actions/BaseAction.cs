@@ -15,4 +15,23 @@ public abstract class BaseAction : MonoBehaviour
     }
 
     public abstract string GetActionName();
+
+    public abstract void TakeAction(GridPosition targetPosition, Action onActionComplete);
+
+    public virtual bool IsValidActionGridPosition(GridPosition gridPosition)
+    {
+        List<GridPosition> validGridPositionList = GetValidActionGridPositionList();
+        
+        foreach (GridPosition gridPos in validGridPositionList)
+        {
+            if(gridPos == gridPosition)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public abstract List<GridPosition> GetValidActionGridPositionList();
 }
