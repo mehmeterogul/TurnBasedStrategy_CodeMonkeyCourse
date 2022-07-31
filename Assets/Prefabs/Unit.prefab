@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6826043315290294366}
   - component: {fileID: 5846475591443254349}
   - component: {fileID: -4778807898618993946}
+  - component: {fileID: -6071956106915968112}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9520199f002bd40beb87e070acc76b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnemy: 0
 --- !u!65 &6826043315290294366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88,6 +90,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365c88e09e8e37a43bd0823e25b6051a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6071956106915968112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3150208323311546473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115d03c33517de943b04154faff1d74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxShootDistance: 7
 --- !u!1 &4596587046499946333
 GameObject:
   m_ObjectHideFlags: 0
