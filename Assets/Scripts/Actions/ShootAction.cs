@@ -31,8 +31,8 @@ public class ShootAction : BaseAction
         {
             case State.Aiming:
                 Vector3 aimDir = (targetUnit.GetWorldPosition() - unit.GetWorldPosition()).normalized;
-                
-                float rotationSpeed = 15f;
+
+                float rotationSpeed = 10f;
                 transform.forward = Vector3.Lerp(transform.forward, aimDir, Time.deltaTime * rotationSpeed);
                 break;
             case State.Shooting:
@@ -67,8 +67,7 @@ public class ShootAction : BaseAction
                 stateTimer = coolOffStateTime;
                 break;
             case State.Cooloff:
-                isActive = false;
-                onActionComplete();
+                ActionComplete();
                 break;
         }
     }
@@ -80,8 +79,7 @@ public class ShootAction : BaseAction
 
     public override void TakeAction(GridPosition targetPosition, Action onActionComplete)
     {
-        this.onActionComplete = onActionComplete;
-        isActive = true;
+        ActionStart(onActionComplete);
 
         targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(targetPosition);
 
