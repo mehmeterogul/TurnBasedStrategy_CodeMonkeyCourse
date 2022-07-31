@@ -6,6 +6,8 @@ using UnityEngine;
 public class UnitAnimator : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private Transform bulletProjectilePrefab;
+    [SerializeField] private Transform shootPointTransform;
 
     private void Awake()
     {
@@ -31,8 +33,14 @@ public class UnitAnimator : MonoBehaviour
         animator.SetBool("isWalking", false);
     }
 
-    private void ShootAction_OnShoot(object sender, EventArgs e)
+    private void ShootAction_OnShoot(object sender, ShootAction.OnShootEventArgs e)
     {
         animator.SetTrigger("shoot");
+
+        Transform bulletProjectileTransform = Instantiate(bulletProjectilePrefab, shootPointTransform.position, Quaternion.identity);
+
+        BulletProjectile bulletProjectile = bulletProjectileTransform.GetComponent<BulletProjectile>();
+        
+        bulletProjectile.Setup(e.targetUnit.GetWorldPosition());
     }
 }
