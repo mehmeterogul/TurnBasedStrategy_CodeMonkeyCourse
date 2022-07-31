@@ -18,6 +18,8 @@ public class ShootAction : BaseAction
     private float stateTimer;
     private bool canShootBullet;
 
+    public event EventHandler OnShoot;
+
     // Update is called once per frame
     void Update()
     {
@@ -74,6 +76,8 @@ public class ShootAction : BaseAction
 
     private void Shoot()
     {
+        OnShoot?.Invoke(this, EventArgs.Empty);
+
         targetUnit.Damage();
     }
 
