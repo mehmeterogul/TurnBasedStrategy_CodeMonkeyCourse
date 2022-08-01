@@ -95,9 +95,9 @@ public class Unit : MonoBehaviour
         OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public string GetActionPoints()
+    public int GetActionPoints()
     {
-        return actionPoints.ToString();
+        return actionPoints;
     }
 
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
@@ -125,7 +125,7 @@ public class Unit : MonoBehaviour
     private void HealthSystem_OnDead(object sender, EventArgs e)
     {
         LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
-        
+
         Destroy(gameObject);
     }
 }
