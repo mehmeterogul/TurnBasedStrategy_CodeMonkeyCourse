@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class ShootAction : BaseAction
 {
+    public event EventHandler<OnShootEventArgs> OnShoot;
+    public class OnShootEventArgs : EventArgs
+    {
+        public Unit targetUnit;
+        public Unit shootingUnit;
+    }
+    
     private enum State
     {
         Aiming,
@@ -17,13 +24,6 @@ public class ShootAction : BaseAction
     private int maxShootDistance = 7;
     private float stateTimer;
     private bool canShootBullet;
-
-    public event EventHandler<OnShootEventArgs> OnShoot;
-    public class OnShootEventArgs : EventArgs
-    {
-        public Unit targetUnit;
-        public Unit shootingUnit;
-    }
 
     // Update is called once per frame
     void Update()
@@ -91,8 +91,6 @@ public class ShootAction : BaseAction
 
     public override void TakeAction(GridPosition targetPosition, Action onActionComplete)
     {
-        ActionStart(onActionComplete);
-
         targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(targetPosition);
 
         state = State.Aiming;
@@ -100,6 +98,8 @@ public class ShootAction : BaseAction
         stateTimer = aimingStateTime;
 
         canShootBullet = true;
+
+        ActionStart(onActionComplete);
     }
 
     public override List<GridPosition> GetValidActionGridPositionList()
@@ -150,5 +150,10 @@ public class ShootAction : BaseAction
     public override string GetActionName()
     {
         return "Shoot";
+    }
+
+    public Unit GetTargetUnit()
+    {
+        return targetUnit;
     }
 }
