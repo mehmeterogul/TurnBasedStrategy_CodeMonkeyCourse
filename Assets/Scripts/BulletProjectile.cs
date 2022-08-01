@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BulletProjectile : MonoBehaviour
 {
+    [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private Transform bulletHitVFXPrefab;
+
     private Vector3 targetPosition;
 
     public void Setup(Vector3 targetPosition)
@@ -24,7 +27,13 @@ public class BulletProjectile : MonoBehaviour
 
         if(distanceBeforeMoving < distanceAfterMoving)
         {
+            transform.position = targetPosition;
+
+            trailRenderer.transform.parent = null;
+
             Destroy(gameObject);
+
+            Instantiate(bulletHitVFXPrefab, targetPosition, Quaternion.identity);
         }
     }
 }
