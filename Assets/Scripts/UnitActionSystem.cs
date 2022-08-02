@@ -32,6 +32,7 @@ public class UnitActionSystem : MonoBehaviour
     private void Start()
     {
         SetSelectedUnit(selectedUnit);
+        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
     }
 
     private void Update()
@@ -149,5 +150,25 @@ public class UnitActionSystem : MonoBehaviour
     public BaseAction GetSelectedAction()
     {
         return selectedAction;
+    }
+
+    private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+    {
+        if(TurnSystem.Instance.IsPlayerTurn())
+        {
+            if(selectedUnit == null)
+            {
+                List<Unit> friendlyUnitList = UnitManager.Instance.GetFriendlyUnitList();
+                
+                if(friendlyUnitList.Count > 0)
+                {
+                    SetSelectedUnit(friendlyUnitList[0]);
+                }
+                else
+                {
+                    SetSelectedUnit(null);
+                }
+            }
+        }
     }
 }

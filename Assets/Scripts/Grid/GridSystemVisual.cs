@@ -60,6 +60,8 @@ public class GridSystemVisual : MonoBehaviour
 
         UnitActionSystem.Instance.OnSelectedActionChange += UnitActionSystem_OnSelectedActionChange;
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAntUnitMovedGridPosition;
+        BaseAction.OnAnyActionCompleted += BaseAction_OnAnyActionCompleted;
+        Unit.OnAnyUnitDead += Unit_OnAnyUnitDead;
 
         UpdateGridVisual();
     }
@@ -146,6 +148,16 @@ public class GridSystemVisual : MonoBehaviour
     }
 
     private void LevelGrid_OnAntUnitMovedGridPosition(object sender, EventArgs e)
+    {
+        UpdateGridVisual();
+    }
+
+    private void BaseAction_OnAnyActionCompleted(object sender, EventArgs e)
+    {
+        UpdateGridVisual();
+    }
+
+    private void Unit_OnAnyUnitDead(object sender, EventArgs e)
     {
         UpdateGridVisual();
     }
