@@ -5,20 +5,27 @@ using Cinemachine;
 
 public class ScreenShake : MonoBehaviour
 {
+    public static ScreenShake Instance {get; private set;}
+
     private CinemachineImpulseSource cinemachineImpulseSource;
 
     // Start is called before the first frame update
     private void Awake()
     {
+        if(Instance != null)
+        {
+            Debug.LogError("There is more than one ScreenShake!" + transform + " - " + Instance);
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
-    // Update is called once per frame
-    private void Update()
+    public void Shake(float intensity = 1f)
     {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            cinemachineImpulseSource.GenerateImpulse();
-        }
+        cinemachineImpulseSource.GenerateImpulse(intensity);
     }
 }
