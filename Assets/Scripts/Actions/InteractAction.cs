@@ -13,18 +13,21 @@ public class InteractAction : BaseAction
         {
             return;
         }
-
-        ActionComplete();
     }
 
     public override void TakeAction(GridPosition targetPosition, Action onActionComplete)
     {
         Door door = LevelGrid.Instance.GetDoorAtGridPosition(targetPosition);
-        door.Interact();
+        door.Interact(OnInteractComplete);
 
         ActionStart(onActionComplete);
     }
     
+    private void OnInteractComplete()
+    {
+        ActionComplete();
+    }
+
     public override List<GridPosition> GetValidActionGridPositionList()
     {
         List<GridPosition> validGridPositionList = new List<GridPosition>();
